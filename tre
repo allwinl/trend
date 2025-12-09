@@ -39,7 +39,7 @@ logging.getLogger('urllib3').setLevel(logging.WARNING)
 logging.getLogger('ccxt').setLevel(logging.WARNING)
 
 # Time interval and trendline parameters
-interval = '1d'  # For trendline calculation
+interval = '4h'  # For trendline calculation
 CHECK_INTERVAL = '15m'  # For price cross check
 PRIMARY_TRENDLINE_LENGTH = 15
 SECONDARY_TRENDLINE_LENGTH = 15
@@ -492,7 +492,7 @@ async def check_alerts(bot: Bot):
     
     for symbol in SELECTED_SYMBOLS:
         try:
-            historical_data_8h = get_historical_data(symbol, interval, limit=100)
+            historical_data_8h = get_historical_data(symbol, interval, limit=150)
             if historical_data_8h.empty:
                 logger.warning(f"No 8h historical data fetched for {symbol}")
                 continue
